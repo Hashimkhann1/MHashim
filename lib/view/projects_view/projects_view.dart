@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myportfolio/res/responsive/responsive.dart';
 
 class ProjectsView extends StatelessWidget {
   const ProjectsView({super.key});
@@ -9,7 +10,7 @@ class ProjectsView extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
     final heigth = MediaQuery.of(context).size.height;
 
-    return Container(
+    return SizedBox(
       width: 1250,
       // height: heigth * 0.5,
       child: GridView.builder(
@@ -17,14 +18,17 @@ class ProjectsView extends StatelessWidget {
           shrinkWrap: true,
           physics: NeverScrollableScrollPhysics(),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
-            childAspectRatio: 0.35/0.3,
+              crossAxisCount: Responsive.isMobile(context) ? 1 : Responsive.isTablet(context) ? 2 : 3,
+            childAspectRatio: Responsive.isMobile(context) ? 0.35/0.22 : 0.35/0.3,
+            mainAxisSpacing: 5,
+            crossAxisSpacing: Responsive.isTablet(context) ? 0 : 5,
           ),
           itemBuilder: (context, index) {
             return Container(
+              margin: EdgeInsets.symmetric(horizontal: Responsive.isDesktop(context) ? 0 : 5),
               decoration: BoxDecoration(
                 color: Colors.red,
-                border: Border.all(color: Colors.white)
+                borderRadius: BorderRadius.circular(Responsive.isTablet(context) ? 10 : 5)
               ),
             );
           }),
