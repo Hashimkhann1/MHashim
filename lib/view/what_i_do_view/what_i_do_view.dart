@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:myportfolio/res/responsive/responsive.dart';
 import 'package:myportfolio/res/widgets/my_text.dart';
 import 'package:myportfolio/res/widgets/my_title_text.dart';
 
@@ -14,74 +15,107 @@ class WhatIDoView extends StatelessWidget {
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: Responsive.isMobile(context) ? CrossAxisAlignment.center : CrossAxisAlignment.start,
       children: [
-        Center(child: MyTitleText(title: "What I Love Doing",fontSize: 55,)),
+        Center(child: MyTitleText(title: "What I Love Doing",fontSize: Responsive.isMobile(context) ? 40 :  55,)),
         SizedBox(height: height * 0.06,),
 
-        Row(
+        Responsive.isMobile(context)
+            ? Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-
-            /// web work
-            SizedBox(
-              width: width * 0.28,
-              child: Column(
-                children: [
-                  /// web icon image
-                  Container(
-                    width: 80,
-                    height: 62,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                    image: DecorationImage(
-                      image: AssetImage('assets/images/webIcon.png'),
-                      fit: BoxFit.cover
-                    )
-                  ),),
-                  SizedBox(height: height * 0.01,),
-
-                  /// title
-                  MyText(title: "Web Development",fontSize: 30,fontWeight: FontWeight.w900,),
-                  SizedBox(height: height * 0.01,),
-                  /// descripition
-                  MyText(title: "I like to code things from scratch, and enjoy bringing ideas to life in the browser. As dedicated developer brings you cutting-edge programming and design.",fontSize: 23,textAlign: TextAlign.center,),
-                ],
-              ),
-            ),
-            SizedBox(width: width * 0.03,),
-
-            /// app word
-            SizedBox(
-              width: width * 0.28,
-              child: Column(
-                children: [
-                  /// web icon image
-                  Container(
-                    width: 120,
-                    height: 90,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                    image: DecorationImage(
-                      image: AssetImage('assets/images/app-development.png'),
-                      fit: BoxFit.fitHeight
-                    )
-                  ),),
-                  SizedBox(height: height * 0.01,),
-
-                  /// title
-                  MyText(title: "Mobile App Development",fontSize: 30,fontWeight: FontWeight.w900,),
-                  SizedBox(height: height * 0.01,),
-
-                  /// descripition
-                  MyText(title: "Experienced mobile app developer who has a track record of success creating apps that are both well-received and commercially viable.",fontSize: 23,textAlign: TextAlign.center,),
-                ],
-              ),
-            ),
-          ],
+          children: _buildContent(context, width, height),
         )
+            : Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: _buildContent(context, width, height),
+        ),
       ],
     );
   }
-}
+
+List<Widget> _buildContent(BuildContext context, double width, double height) {
+  return [
+    /// Web Development section
+    SizedBox(
+      width: Responsive.isMobile(context) ? width * 0.94 : width * 0.28,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          // Web icon image
+          Container(
+            width: 80,
+            height: 62,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              image: DecorationImage(
+                image: AssetImage('assets/images/webIcon.png'),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          SizedBox(height: height * 0.01),
+
+          // Title
+          MyText(
+            title: "Web Development",
+            fontSize: Responsive.isMobile(context) ? 25 : 30,
+            fontWeight: FontWeight.w900,
+          ),
+          SizedBox(height: height * 0.01),
+
+          // Description
+          MyText(
+            title:
+            "I like to code things from scratch, and enjoy bringing ideas to life in the browser. As a dedicated developer brings you cutting-edge programming and design.",
+            fontSize: Responsive.isMobile(context) ? 18 : 23,
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
+    ),
+    SizedBox(width: width * 0.03 , height: Responsive.isMobile(context) ? height * 0.06 : 0,),
+
+    /// Mobile App Development section
+    SizedBox(
+      width: Responsive.isMobile(context) ? width * 0.94 : width * 0.28,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          // App development icon image
+          Container(
+            width: 120,
+            height: 90,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              image: DecorationImage(
+                image: AssetImage('assets/images/app-development.png'),
+                fit: BoxFit.fitHeight,
+              ),
+            ),
+          ),
+          SizedBox(height: height * 0.01),
+
+          // Title
+          MyText(
+            title: "Mobile App Development",
+            fontSize: Responsive.isMobile(context) ? 25 : 30,
+            fontWeight: FontWeight.w900,
+          ),
+          SizedBox(height: height * 0.01),
+
+          // Description
+          MyText(
+            title:
+            "Experienced mobile app developer who has a track record of success creating apps that are both well-received and commercially viable.",
+            fontSize: Responsive.isMobile(context) ? 18 : 23,
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
+    ),
+  ];
+}}
