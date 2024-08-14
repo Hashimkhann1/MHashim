@@ -1,7 +1,6 @@
 
 
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:myportfolio/res/my_colors/my_colors.dart';
 import 'package:myportfolio/res/widgets/my_text.dart';
@@ -24,24 +23,24 @@ class HeaderView extends StatelessWidget {
             children: [
               Card(
                 shape: RoundedRectangleBorder(
-                  side: BorderSide(color: MyColors.flutterColor,width: 4),
+                  side: const BorderSide(color: MyColors.flutterColor,width: 4),
                   borderRadius: BorderRadius.circular(40)
                 ),
-                child: CircleAvatar(
+                child: const CircleAvatar(
                   radius: 40,
                   backgroundColor: MyColors.flutterColor,
                   backgroundImage: AssetImage('assets/images/profile.jpg'),
                 ),
               ),
-              SizedBox(width: 20,),
+              const SizedBox(width: 20,),
               Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   /// name
-                  Container(child: MyText(title: "M Hashim",fontSize: 26,fontWeight: FontWeight.w900,color: MyColors.blacColor,fontFamily: 'Oswald',letterSpacing: 2,)),
+                  const MyText(title: "M Hashim",fontSize: 26,fontWeight: FontWeight.w900,color: MyColors.blacColor,fontFamily: 'Oswald',letterSpacing: 2,),
                   RichText(
-                      text: TextSpan(
+                      text: const TextSpan(
                           text: "Flutter",
                           style: TextStyle(
                               color: MyColors.flutterColor,
@@ -70,14 +69,14 @@ class HeaderView extends StatelessWidget {
             ],
           ),
           
-          Row(
+          const Row(
             children: [
               MyText(title: "Home",fontSize: 20,fontWeight: FontWeight.w800,color: MyColors.flutterColor,),
-              SizedBox(width: width * 0.01,),
+              SizedBox(width: 16,),
               MyText(title: "About",fontSize: 20,fontWeight: FontWeight.w800,color: MyColors.flutterColor,),
-              SizedBox(width: width * 0.01,),
+              SizedBox(width: 16,),
               MyText(title: "Project",fontSize: 20,fontWeight: FontWeight.w800,color: MyColors.flutterColor,),
-              SizedBox(width: width * 0.01,),
+              SizedBox(width: 16,),
               MyText(title: "Contact",fontSize: 20,fontWeight: FontWeight.w800,color: MyColors.flutterColor,),
             ],
           )
