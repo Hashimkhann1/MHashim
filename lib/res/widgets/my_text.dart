@@ -8,6 +8,7 @@ class MyText extends StatelessWidget {
   final TextAlign? textAlign;
   final String? fontFamily;
   final double? letterSpacing;
+  final double? wordSpacing;
 
   const MyText(
       {super.key,
@@ -18,6 +19,7 @@ class MyText extends StatelessWidget {
         this.textAlign,
         this.fontFamily,
         this.letterSpacing,
+        this.wordSpacing,
       });
 
   @override
@@ -26,7 +28,7 @@ class MyText extends StatelessWidget {
       title,
 
       style:
-          TextStyle(fontSize: fontSize, fontWeight: fontWeight, color: color,fontFamily: fontFamily,letterSpacing: letterSpacing),
+          TextStyle(fontSize: fontSize, fontWeight: fontWeight, color: color,fontFamily: fontFamily,letterSpacing: letterSpacing,wordSpacing: wordSpacing),
       textAlign: textAlign,
     );
   }
