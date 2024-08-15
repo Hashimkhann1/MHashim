@@ -3,10 +3,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:myportfolio/res/my_colors/my_colors.dart';
+import 'package:myportfolio/res/responsive/responsive.dart';
 import 'package:myportfolio/res/widgets/my_text.dart';
 
 class HeaderView extends StatelessWidget {
-  const HeaderView({super.key});
+  const HeaderView({super.key,this.openDrawerOnTap});
+  final void Function()? openDrawerOnTap;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,10 @@ class HeaderView extends StatelessWidget {
         children: [
           Row(
             children: [
-              Card(
+
+              /// drawer icon
+              Responsive.isMobile(context) ? GestureDetector(onTap: openDrawerOnTap, child: Icon(Icons.menu,color: MyColors.flutterColor,size: 40,)) : SizedBox(),
+              Responsive.isMobile(context) ? const SizedBox() :   Card(
                 shape: RoundedRectangleBorder(
                   side: const BorderSide(color: MyColors.flutterColor,width: 4),
                   borderRadius: BorderRadius.circular(40)
@@ -33,7 +38,7 @@ class HeaderView extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 20,),
-              Column(
+              Responsive.isMobile(context) ? const SizedBox() :   Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -68,8 +73,8 @@ class HeaderView extends StatelessWidget {
               )
             ],
           ),
-          
-          const Row(
+
+          Responsive.isMobile(context) ? const SizedBox() :   const Row(
             children: [
               MyText(title: "Home",fontSize: 20,fontWeight: FontWeight.w800,color: MyColors.flutterColor,),
               SizedBox(width: 16,),

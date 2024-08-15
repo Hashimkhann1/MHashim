@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:myportfolio/res/my_colors/my_colors.dart';
 import 'package:myportfolio/res/responsive/responsive.dart';
+import 'package:myportfolio/res/widgets/my_drawer/my_drawer.dart';
 import 'package:myportfolio/res/widgets/my_text.dart';
 import 'package:myportfolio/res/widgets/my_title_text.dart';
 import 'package:myportfolio/view/contact_view/contact_view.dart';
@@ -12,7 +13,9 @@ import 'package:myportfolio/view/projects_view/projects_view.dart';
 import 'package:myportfolio/view/what_i_do_view/what_i_do_view.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({super.key});
+  HomeView({super.key});
+
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
@@ -20,23 +23,16 @@ class HomeView extends StatelessWidget {
     final height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: MyColors.whiteColor,
-      appBar: Responsive.isMobile(context)
-          ? AppBar(
-        iconTheme: IconThemeData(color: MyColors.blacColor), // Icon color
-        backgroundColor: MyColors.whiteColor,
-        elevation: 0, // Remove shadow under AppBar
-      )
-          : null, // AppBar only for mobile view
 
-      drawer:  Responsive.isMobile(context)
-          ?  Drawer(
-        backgroundColor: MyColors.whiteColor,
-      ) : null,
+      key: _scaffoldKey,
+
+      backgroundColor: MyColors.whiteColor,
+      drawer: MyDrawer(closeDrawerOnTap: () {_scaffoldKey.currentState!.closeDrawer();},),
+
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Responsive.isMobile(context) ? const SizedBox() : const HeaderView(),
+            HeaderView(openDrawerOnTap: () {_scaffoldKey.currentState!.openDrawer();},),
             SizedBox(height: Responsive.isMobile(context) ? height * 0.08 : 0),
 
             /// main section
