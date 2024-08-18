@@ -1,13 +1,15 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:myportfolio/res/widgets/my_text.dart';
 
 class MyTitleText extends StatelessWidget {
 
   final String? title;
   final double? fontSize;
-  const MyTitleText({super.key,required this.title , this.fontSize});
+  final bool? isAnimate;
+  const MyTitleText({super.key,required this.title , this.fontSize,this.isAnimate});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +34,7 @@ class MyTitleText extends StatelessWidget {
               letterSpacing: 3,
               color: Colors.transparent,
             ),
-          ),
+          ).animate().fade(duration: 200.ms).scaleX(duration: Duration(milliseconds: 2300)),
         ),
         Container(
           child: MyText(
@@ -41,7 +43,7 @@ class MyTitleText extends StatelessWidget {
             fontWeight: FontWeight.bold,
             fontFamily: 'Oswald',
             letterSpacing: 3,
-          ),
+          )
         ),
       ],
     );
