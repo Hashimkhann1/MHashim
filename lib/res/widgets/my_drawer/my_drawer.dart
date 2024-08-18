@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:myportfolio/res/my_colors/my_colors.dart';
 import 'package:myportfolio/res/widgets/my_text_button.dart';
 
@@ -45,7 +46,7 @@ class MyDrawer extends StatelessWidget {
 
                 /// about button
                 MyTextButton(
-                  width: width * 0.46,
+                  width: width * 0.60,
                     height: 44,
                     title: "About",
                     fontSize: 22,
@@ -55,7 +56,7 @@ class MyDrawer extends StatelessWidget {
 
                 /// project buttons
                 MyTextButton(
-                  width: width * 0.46,
+                  width: width * 0.60,
                     height: 44,
                     title: "Projects",
                     fontSize: 22,
@@ -65,13 +66,25 @@ class MyDrawer extends StatelessWidget {
 
                 ///contact button
                 MyTextButton(
-                  width: width * 0.46,
+                  width: width * 0.60,
                     height: 44,
                     title: "Contact",
                     fontSize: 22,
                     onPressed: (){},
                 ),
 
+              ],
+            ),
+            Spacer(),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(onPressed: () {}, icon: FaIcon(FontAwesomeIcons.linkedin , size: 30,),color: Colors.blueAccent),
+                SizedBox(width: 12,),
+                IconButton(onPressed: () {}, icon: FaIcon(FontAwesomeIcons.github , size: 30,),color: MyColors.blacColor),
+                SizedBox(width: 12,),
+                IconButton(onPressed: () {}, icon: FaIcon(FontAwesomeIcons.facebook , size: 30,),color: Colors.blueAccent),
               ],
             )
           ],
