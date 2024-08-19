@@ -42,7 +42,7 @@ class InitialView extends StatelessWidget {
             ).animate().fade(duration: 600.ms,delay: 500.ms).scaleX(duration: const Duration(milliseconds: 2300)),
             MyText(
               title: "Flutter Developer",
-              fontSize: Responsive.isMobile(context) ? 38 : 38,
+              fontSize: 38,
               fontWeight: FontWeight.bold,
               fontFamily: 'Oswald',
               color: Colors.white,
