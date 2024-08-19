@@ -81287,9 +81287,9 @@ q=q.d.gI()
 if(q!=null)q.FB()},
 $S:0}
 A.GR.prototype={
-M(a){var s,r,q,p,o,n,m,l,k=null,j="Flutter Developer",i=6e5,h=5e5,g=t.w,f=A.aa(a,k,g).w.a.a,e=A.aa(a,k,g).w.a.b,d=A.bF(k,A.aa(a,k,g).w.a.a<750?e*0.02:e*0.1,k),c=A.fI(new A.pn(B.D,B.ik,A.aa(a,k,g).w.a.a<750?100:110,k),k),b=A.aN(i,0)
+M(a){var s,r,q,p,o,n,m,l,k=null,j="Flutter Developer",i=6e5,h=5e5,g=t.w,f=A.aa(a,k,g).w.a.a,e=A.aa(a,k,g).w.a.b,d=A.bF(k,A.aa(a,k,g).w.a.a<750?e*0.02:e*0.1,k),c=A.fI(new A.pn(B.D,B.ik,A.aa(a,k,g).w.a.a<750?90:110,k),k),b=A.aN(i,0)
 b=A.K6(A.il(c,A.aN(4e5,0),b),k,k,B.mn,k)
-c=A.bF(k,A.aa(a,k,g).w.a.a<750?e*0.05:e*0.03,k)
+c=A.bF(k,A.aa(a,k,g).w.a.a<750?e*0.04:e*0.03,k)
 s=A.T(204,105,240,174)
 A.aa(a,k,g).toString
 s=A.fI(A.xu(k,A.d0(k,A.iA(B.D,"Oswald",38,B.bl,3,k,j),B.v,k,k,new A.cj(s,k,k,k,k,k,B.ae),k,22,k,k,k,k,k),k,k,k,k,e*0.009,k),k)
@@ -81302,7 +81302,7 @@ p=t.p
 q=A.k0(B.lf,A.b([r,A.a8a(A.il(s,A.aN(8e5,0),q),B.n,k,B.j0)],p),B.a4,B.bS)
 s=A.bF(k,e*0.03,k)
 r=A.aa(a,k,g).w.a.a<750?f*0.92:f*0.68
-o=A.aa(a,k,g).w.a.a<750?21:26
+o=A.aa(a,k,g).w.a.a<750?20:26
 n=A.T(B.c.ag(178.5),255,255,255)
 o=A.fI(A.iA(n,k,o,k,1.3,A.aa(a,k,g).w.a.a<750?B.aO:B.cM,"For over a decade, I\u2019ve mastered the craft of turning code into dynamic, functional experiences. As a Flutter developer, I create seamless cross-platform apps, blending creativity with technical skill. From bringing ideas to life on the web to crafting elegant mobile solutions, I have the expertise to transform visions into reality."),k)
 n=A.aN(i,0)
