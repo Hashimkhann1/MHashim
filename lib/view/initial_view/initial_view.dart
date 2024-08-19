@@ -12,15 +12,16 @@ class InitialView extends StatelessWidget {
 
     return Column(
       children: [
-        SizedBox(height: Responsive.isMobile(context) ? height * 0.02 : height * 0.1,),
+        SizedBox(height: Responsive.isMobile(context) ? height * 0.01 : height * 0.1,),
         CircleAvatar(
-          radius: Responsive.isMobile(context) ? 90 : 110,
+          radius: Responsive.isMobile(context) ? 80 : 110,
           backgroundColor: Colors.transparent,
           backgroundImage: const AssetImage('assets/images/profile.jpg'),
         ).animate().fade(duration: 600.ms,delay: 400.ms).slideY(duration: const Duration(milliseconds: 1500)),
-        SizedBox(height: Responsive.isMobile(context) ? height * 0.04 : height * 0.03),
+        SizedBox(height: Responsive.isMobile(context) ? height * 0.02 : height * 0.03),
         Stack(
           alignment: Alignment.topCenter,
+          clipBehavior: Clip.none,
           children: [
             Positioned(
               top: height * 0.009,
@@ -49,7 +50,7 @@ class InitialView extends StatelessWidget {
             ).animate().fade(duration: 700.ms,delay: 800.ms).shimmer(duration: const Duration(milliseconds: 2500),color: Colors.black),
           ],
         ),
-        SizedBox(height: height * 0.03),
+        SizedBox(height: Responsive.isMobile(context) ?height * 0.02 : height * 0.03),
         SizedBox(
           width: Responsive.isMobile(context) ? width * 0.92 : width * 0.68,
           child: MyText(
