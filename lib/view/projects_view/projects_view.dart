@@ -15,7 +15,7 @@ class ProjectsView extends StatelessWidget {
         // controller: _scrollController,
         itemCount: 6,
         shrinkWrap: true,
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: Responsive.isMobile(context)
               ? 1
