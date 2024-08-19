@@ -14,11 +14,11 @@ class InitialView extends StatelessWidget {
       children: [
         SizedBox(height: Responsive.isMobile(context) ? height * 0.02 : height * 0.1,),
         CircleAvatar(
-          radius: Responsive.isMobile(context) ? 100 : 110,
+          radius: Responsive.isMobile(context) ? 90 : 110,
           backgroundColor: Colors.transparent,
           backgroundImage: const AssetImage('assets/images/profile.jpg'),
         ).animate().fade(duration: 600.ms,delay: 400.ms).slideY(duration: const Duration(milliseconds: 1500)),
-        SizedBox(height: Responsive.isMobile(context) ? height * 0.05 : height * 0.03),
+        SizedBox(height: Responsive.isMobile(context) ? height * 0.04 : height * 0.03),
         Stack(
           alignment: Alignment.topCenter,
           children: [
@@ -55,7 +55,7 @@ class InitialView extends StatelessWidget {
           child: MyText(
             title:
             "For over a decade, I’ve mastered the craft of turning code into dynamic, functional experiences. As a Flutter developer, I create seamless cross-platform apps, blending creativity with technical skill. From bringing ideas to life on the web to crafting elegant mobile solutions, I have the expertise to transform visions into reality.",
-            fontSize: Responsive.isMobile(context) ? 21 : 26,
+            fontSize: Responsive.isMobile(context) ? 20 : 26,
             letterSpacing: 1.3,
             color: MyColors.whiteColor.withOpacity(0.7),
             textAlign: Responsive.isMobile(context) ? TextAlign.start : TextAlign.center,
