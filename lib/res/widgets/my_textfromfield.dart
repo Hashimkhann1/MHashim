@@ -36,33 +36,31 @@ class MyTextFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      obscureText: obscureText,
-      controller: controller,
-      keyboardType: keyboardType,
-      maxLines: maxLines,
-      style: TextStyle(
-        color: textColor
+    return Container(
+      decoration: BoxDecoration(
+        border: Border(bottom: BorderSide(color: Colors.greenAccent.withOpacity(0.8),width: 2))
       ),
-      decoration: InputDecoration(
-          hintText: hintText,
-          hintStyle: TextStyle(
-            color: hintTextColor
-          ),
-          filled: true,
-          fillColor: fillColor,
-          enabledBorder: OutlineInputBorder(
-            borderSide: outllineBorderSide,
-          ),
+      child: TextFormField(
+        obscureText: obscureText,
+        controller: controller,
+        keyboardType: keyboardType,
+        maxLines: maxLines,
+        style: TextStyle(
+          color: textColor
+        ),
+        decoration: InputDecoration(
+            hintText: hintText,
+            hintStyle: TextStyle(
+              color: hintTextColor
+            ),
+            filled: true,
+            fillColor: fillColor,
           border: OutlineInputBorder(
-            borderSide: outllineBorderSide,
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderSide:
-                focusedBorderSide,
-          ),
+            borderSide: Border(bottom: )
+          )
+        ),
+        validator: validator,
       ),
-      validator: validator,
     );
   }
 }
