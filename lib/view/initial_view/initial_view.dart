@@ -48,8 +48,8 @@ class InitialView extends StatelessWidget {
               fontFamily: 'Oswald',
               color: Color(0xFFFFFFFF),
               letterSpacing: 3,
-            )
-                // .animate().fade(duration: 700.ms,delay: 800.ms).shimmer(duration: const Duration(milliseconds: 2500),color: MyColors.flutterColor),
+            ).animate().shimmer(duration: const Duration(milliseconds: 2500),color: MyColors.flutterColor),
+        // .fade(duration: 700.ms,delay: 800.ms)
           ],
         ),
         SizedBox(height: Responsive.isMobile(context) ?height * 0.02 : height * 0.03),
