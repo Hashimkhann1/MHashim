@@ -1,6 +1,7 @@
 
 import 'package:myportfolio/res/my_colors/my_colors.dart';
 import 'package:myportfolio/view.dart';
+import 'package:shimmer/shimmer.dart';
 
 class InitialView extends StatelessWidget {
   const InitialView({super.key});
@@ -41,15 +42,21 @@ class InitialView extends StatelessWidget {
                 ),
               ),
             ).animate().fade(duration: 600.ms,delay: 500.ms).scaleX(duration: const Duration(milliseconds: 2300)),
-            const MyText(
-              title: "Flutter Developer",
-              fontSize: 38,
-              fontWeight: FontWeight.bold,
-              fontFamily: 'Oswald',
-              color: Color(0xFFFFFFFF),
-              letterSpacing: 3,
-            ).animate().shimmer(duration: const Duration(milliseconds: 2500),color: MyColors.flutterColor),
-        // .fade(duration: 700.ms,delay: 800.ms)
+            Shimmer.fromColors(
+              baseColor: MyColors.whiteColor,
+              highlightColor: MyColors.flutterColor,
+              loop: 2,
+              period: Duration(milliseconds: 2000),
+              child: const MyText(
+                title: "Flutter Developer",
+                fontSize: 38,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Oswald',
+                color: Color(0xFFFFFFFF),
+                letterSpacing: 3,
+              ).animate().fade(duration: 600.ms,delay: 600.ms).saturate(duration: const Duration(milliseconds: 2000),delay: 2000.ms),
+            ),
+
           ],
         ),
         SizedBox(height: Responsive.isMobile(context) ?height * 0.02 : height * 0.03),
@@ -62,7 +69,7 @@ class InitialView extends StatelessWidget {
             letterSpacing: 1.3,
             color: MyColors.whiteColor.withOpacity(0.7),
             textAlign: Responsive.isMobile(context) ? TextAlign.start : TextAlign.center,
-          ).animate().fade(duration: 600.ms,delay: 500.ms).saturate(duration: const Duration(milliseconds: 3400)),
+          ).animate().fade(duration: 1600.ms,delay: 1200.ms).saturate(duration: const Duration(milliseconds: 3000),delay: 3000.ms),
         ),
 
         SizedBox(height: height * 0.02,),
@@ -81,7 +88,7 @@ class InitialView extends StatelessWidget {
           borderRadius: 12,
           borderWidth: 2,
           onPress: () {  },
-        ).animate().fade(delay: 500.ms).scaleY(delay: 1600.ms,duration: const Duration(milliseconds: 300)).shimmer(delay: 2000.ms, duration: const Duration(milliseconds: 1400),),
+        ).animate().fade(delay: 500.ms).scaleY(delay: 1600.ms,duration: const Duration(milliseconds: 300)),
 
         SizedBox(height: Responsive.isMobile(context) ? height * 0.02 : height * 0.04,)
       ],
