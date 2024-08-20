@@ -1,4 +1,5 @@
 
+import 'package:myportfolio/res/my_colors/my_colors.dart';
 import 'package:myportfolio/view.dart';
 
 class InitialView extends StatelessWidget {
@@ -14,7 +15,7 @@ class InitialView extends StatelessWidget {
       children: [
         SizedBox(height: Responsive.isMobile(context) ? height * 0.01 : height * 0.1,),
         CircleAvatar(
-          radius: Responsive.isMobile(context) ? 80 : 110,
+          radius: Responsive.isMobile(context) ? 76 : 110,
           backgroundColor: Colors.transparent,
           backgroundImage: const AssetImage('assets/images/profile.jpg'),
         ).animate().fade(duration: 600.ms,delay: 400.ms).slideY(duration: const Duration(milliseconds: 1500)),
@@ -30,9 +31,9 @@ class InitialView extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.greenAccent.withOpacity(0.8),
                 ),
-                child: MyText(
+                child: const MyText(
                   title: "Flutter Developer",
-                  fontSize: Responsive.isMobile(context) ? 38 : 38,
+                  fontSize: 38,
                   fontWeight: FontWeight.bold,
                   fontFamily: 'Oswald',
                   letterSpacing: 3,
@@ -40,14 +41,14 @@ class InitialView extends StatelessWidget {
                 ),
               ),
             ).animate().fade(duration: 600.ms,delay: 500.ms).scaleX(duration: const Duration(milliseconds: 2300)),
-            MyText(
+            const MyText(
               title: "Flutter Developer",
               fontSize: 38,
               fontWeight: FontWeight.bold,
               fontFamily: 'Oswald',
-              color: Colors.white,
+              color: MyColors.whiteColor,
               letterSpacing: 3,
-            ).animate().fade(duration: 700.ms,delay: 800.ms).shimmer(duration: const Duration(milliseconds: 2500),color: Colors.black),
+            ).animate().fade(duration: 700.ms,delay: 800.ms).shimmer(duration: const Duration(milliseconds: 2500),color: MyColors.flutterColor),
           ],
         ),
         SizedBox(height: Responsive.isMobile(context) ?height * 0.02 : height * 0.03),
@@ -56,7 +57,7 @@ class InitialView extends StatelessWidget {
           child: MyText(
             title:
             "For over a decade, I’ve mastered the craft of turning code into dynamic, functional experiences. As a Flutter developer, I create seamless cross-platform apps, blending creativity with technical skill. From bringing ideas to life on the web to crafting elegant mobile solutions, I have the expertise to transform visions into reality.",
-            fontSize: Responsive.isMobile(context) ? 20 : 26,
+            fontSize: Responsive.isMobile(context) ? 19 : 26,
             letterSpacing: 1.3,
             color: MyColors.whiteColor.withOpacity(0.7),
             textAlign: Responsive.isMobile(context) ? TextAlign.start : TextAlign.center,
@@ -70,7 +71,7 @@ class InitialView extends StatelessWidget {
           text: 'About me',
           textStyle: const TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 20),
           isReverse: true,
-          selectedTextColor: Colors.white,
+          selectedTextColor: MyColors.whiteColor,
           transitionType: TransitionType.LEFT_TO_RIGHT,
           // textStyle: submitTextStyle,
           selectedBackgroundColor: Colors.greenAccent.withOpacity(0.8),
@@ -79,7 +80,7 @@ class InitialView extends StatelessWidget {
           borderRadius: 12,
           borderWidth: 2,
           onPress: () {  },
-        ).animate().fade(delay: 500.ms).scaleY(delay: 1600.ms,duration: const Duration(milliseconds: 300)).shimmer(delay: 2000.ms, duration: const Duration(milliseconds: 1400)),
+        ).animate().fade(delay: 500.ms).scaleY(delay: 1600.ms,duration: const Duration(milliseconds: 300)).shimmer(delay: 2000.ms, duration: const Duration(milliseconds: 1400),),
 
         SizedBox(height: Responsive.isMobile(context) ? height * 0.02 : height * 0.04,)
       ],
