@@ -34,7 +34,7 @@ class MyTitleText extends StatelessWidget {
               letterSpacing: 3,
               color: Colors.transparent,
             ),
-          ).animate().fade(duration: 200.ms).scaleX(duration: Duration(milliseconds: 2300)),
+          ).animate().fade(duration: 200.ms).scaleX(duration: const Duration(milliseconds: 2300)),
         ),
         Container(
           child: MyText(
@@ -43,7 +43,7 @@ class MyTitleText extends StatelessWidget {
             fontWeight: FontWeight.bold,
             fontFamily: 'Oswald',
             letterSpacing: 3,
-            color: Color(0xFFFFFFFF),
+            color: const Color(0xFFFFFFFF),
           )
         ),
       ],
