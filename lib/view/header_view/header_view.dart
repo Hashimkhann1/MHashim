@@ -27,7 +27,8 @@ class _HeaderViewState extends State<HeaderView> {
     final height = MediaQuery.of(context).size.height;
 
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: width * 0.08, vertical: height * 0.03),
+      padding: EdgeInsets.symmetric(
+          horizontal: width * 0.08, vertical: height * 0.03),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -36,75 +37,86 @@ class _HeaderViewState extends State<HeaderView> {
               // Drawer icon and profile
               Responsive.isMobile(context)
                   ? GestureDetector(
-                  onTap: widget.openDrawerOnTap,
-                  child: const Icon(Icons.menu, color: MyColors.flutterColor, size: 40))
+                      onTap: widget.openDrawerOnTap,
+                      child: const Icon(Icons.menu,
+                          color: MyColors.flutterColor, size: 40))
                   : const SizedBox(),
               Responsive.isMobile(context)
                   ? const SizedBox()
                   : Card(
-                shape: RoundedRectangleBorder(
-                    side: const BorderSide(color: MyColors.flutterColor, width: 4),
-                    borderRadius: BorderRadius.circular(40)),
-                child: const CircleAvatar(
-                  radius: 40,
-                  backgroundColor: MyColors.flutterColor,
-                  backgroundImage: AssetImage('assets/images/profile.jpg'),
-                ),
-              ),
+                      shape: RoundedRectangleBorder(
+                          side: const BorderSide(
+                              color: MyColors.flutterColor, width: 4),
+                          borderRadius: BorderRadius.circular(40)),
+                      child: const CircleAvatar(
+                        radius: 40,
+                        backgroundColor: MyColors.flutterColor,
+                        backgroundImage:
+                            AssetImage('assets/images/profile.jpg'),
+                      ),
+                    ),
               const SizedBox(width: 20),
               Responsive.isMobile(context)
                   ? const SizedBox()
                   : Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const MyText(
-                    title: "M Hashim",
-                    fontSize: 26,
-                    fontWeight: FontWeight.w900,
-                    color: MyColors.whiteColor,
-                    fontFamily: 'Oswald',
-                    letterSpacing: 2,
-                  ).animate().fade(duration: 700.ms, delay: 800.ms).shimmer(
-                      duration: const Duration(milliseconds: 2500), color: Colors.black),
-                  RichText(
-                      text: const TextSpan(
-                          text: "Flutter",
-                          style: TextStyle(
-                              color: MyColors.flutterColor,
-                              fontSize: 22,
-                              fontFamily: 'Oswald',
-                              fontWeight: FontWeight.w800),
-                          children: <TextSpan>[
-                            TextSpan(
-                              text: " ",
-                              style: TextStyle(fontSize: 22),
-                            ),
-                            TextSpan(
-                                text: "Developer",
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    color: MyColors.whiteColor,
-                                    fontWeight: FontWeight.w300))
-                          ])).animate().fade(duration: 700.ms, delay: 800.ms).shimmer(
-                      duration: const Duration(milliseconds: 2500), color: MyColors.flutterColor),
-                ],
-              ),
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const MyText(
+                          title: "M Hashim",
+                          fontSize: 26,
+                          fontWeight: FontWeight.w900,
+                          color: MyColors.whiteColor,
+                          fontFamily: 'Oswald',
+                          letterSpacing: 2,
+                        )
+                            .animate()
+                            .fade(duration: 700.ms, delay: 800.ms)
+                            .shimmer(
+                                duration: const Duration(milliseconds: 2500),
+                                color: Colors.black),
+                        RichText(
+                                text: const TextSpan(
+                                    text: "Flutter",
+                                    style: TextStyle(
+                                        color: MyColors.flutterColor,
+                                        fontSize: 22,
+                                        fontFamily: 'Oswald',
+                                        fontWeight: FontWeight.w800),
+                                    children: <TextSpan>[
+                              TextSpan(
+                                text: " ",
+                                style: TextStyle(fontSize: 22),
+                              ),
+                              TextSpan(
+                                  text: "Developer",
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      color: MyColors.whiteColor,
+                                      fontWeight: FontWeight.w300))
+                            ]))
+                            .animate()
+                            .fade(duration: 700.ms, delay: 800.ms)
+                            .shimmer(
+                                duration: const Duration(milliseconds: 2500),
+                                color: MyColors.flutterColor),
+                      ],
+                    ),
             ],
           ),
           Responsive.isMobile(context)
               ? const SizedBox()
               : Row(
-            children: [
-              HeaderButton("Home"),
-              const SizedBox(width: 16),
-              HeaderButton("About"),
-              const SizedBox(width: 16),
-              HeaderButton("Project"),
-              const SizedBox(width: 16),
-              HeaderButton("Contact"),
-            ],
-          ),
+                  children: [
+                    HeaderButton("Home"),
+                    const SizedBox(width: 16),
+                    HeaderButton("About"),
+                    const SizedBox(width: 16),
+                    HeaderButton("Project"),
+                    const SizedBox(width: 16),
+                    HeaderButton("Contact"),
+                  ],
+                ),
         ],
       ),
     );
@@ -125,9 +137,15 @@ class _HeaderViewState extends State<HeaderView> {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
         margin: EdgeInsets.only(bottom: _isHovered[title]! ? 30 : 0),
-        transform: Matrix4.rotationY(_isHovered[title]! ? 0.26 : 0)..rotateZ(_isHovered[title]! ? 0.2 : 0),
+        transform: Matrix4.rotationY(_isHovered[title]! ? 0.26 : 0)
+          ..rotateZ(_isHovered[title]! ? 0.2 : 0),
         decoration: BoxDecoration(
-          border: Border(bottom: BorderSide(color: _isHovered[title]! ? Colors.greenAccent.withOpacity(0.9) : Colors.transparent , width: 4))
+            border: Border(
+                bottom: BorderSide(
+                    color: _isHovered[title]!
+                        ? Colors.greenAccent.withOpacity(0.9)
+                        : Colors.transparent,
+                    width: 4))
         ),
         child: MyText(
           title: title,
