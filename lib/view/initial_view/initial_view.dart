@@ -46,7 +46,7 @@ class InitialView extends StatelessWidget {
               fontSize: 38,
               fontWeight: FontWeight.bold,
               fontFamily: 'Oswald',
-              color: MyColors.whiteColor,
+              color: Color(0xFFFFFFFF),
               letterSpacing: 3,
             ).animate().fade(duration: 700.ms,delay: 800.ms).shimmer(duration: const Duration(milliseconds: 2500),color: MyColors.flutterColor),
           ],

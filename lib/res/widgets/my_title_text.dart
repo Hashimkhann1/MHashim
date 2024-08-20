@@ -43,6 +43,7 @@ class MyTitleText extends StatelessWidget {
             fontWeight: FontWeight.bold,
             fontFamily: 'Oswald',
             letterSpacing: 3,
+            color: Color(0xFFFFFFFF),
           )
         ),
       ],
