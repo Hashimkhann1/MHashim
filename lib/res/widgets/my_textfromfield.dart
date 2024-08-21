@@ -55,9 +55,6 @@ class MyTextFormField extends StatelessWidget {
             ),
             filled: true,
             fillColor: fillColor,
-          border: OutlineInputBorder(
-            borderSide: Border(bottom: )
-          )
         ),
         validator: validator,
       ),
