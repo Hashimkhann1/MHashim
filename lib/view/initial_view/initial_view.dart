@@ -1,5 +1,4 @@
 
-import 'package:myportfolio/res/my_colors/my_colors.dart';
 import 'package:myportfolio/view.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -46,7 +45,7 @@ class InitialView extends StatelessWidget {
               baseColor: MyColors.whiteColor,
               highlightColor: MyColors.flutterColor,
               loop: 2,
-              period: Duration(milliseconds: 2000),
+              period: const Duration(milliseconds: 2000),
               child: const MyText(
                 title: "Flutter Developer",
                 fontSize: 38,
@@ -65,9 +64,11 @@ class InitialView extends StatelessWidget {
           child: MyText(
             title:
             "For over a decade, I’ve mastered the craft of turning code into dynamic, functional experiences. As a Flutter developer, I create seamless cross-platform apps, blending creativity with technical skill. From bringing ideas to life on the web to crafting elegant mobile solutions, I have the expertise to transform visions into reality.",
-            fontSize: Responsive.isMobile(context) ? 19 : 26,
-            letterSpacing: 1.3,
-            color: MyColors.whiteColor.withOpacity(0.7),
+            fontSize: Responsive.isMobile(context) ? 20 : 26,
+            letterSpacing: 1,
+            fontFamily: 'Oswald',
+            color: Colors.grey[500],
+            fontWeight: FontWeight.bold,
             textAlign: Responsive.isMobile(context) ? TextAlign.start : TextAlign.center,
           ).animate().fade(duration: 1600.ms,delay: 1200.ms).saturate(duration: const Duration(milliseconds: 3000),delay: 3000.ms),
         ),

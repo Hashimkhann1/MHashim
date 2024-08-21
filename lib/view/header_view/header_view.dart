@@ -5,7 +5,7 @@ import 'package:myportfolio/res/responsive/responsive.dart';
 import 'package:myportfolio/res/widgets/my_text.dart';
 
 class HeaderView extends StatefulWidget {
-  HeaderView({super.key, this.openDrawerOnTap});
+  const HeaderView({super.key, this.openDrawerOnTap});
   final void Function()? openDrawerOnTap;
 
   @override
@@ -108,13 +108,13 @@ class _HeaderViewState extends State<HeaderView> {
               ? const SizedBox()
               : Row(
                   children: [
-                    HeaderButton("Home"),
+                    headerButton("Home"),
                     const SizedBox(width: 16),
-                    HeaderButton("About"),
+                    headerButton("About"),
                     const SizedBox(width: 16),
-                    HeaderButton("Project"),
+                    headerButton("Project"),
                     const SizedBox(width: 16),
-                    HeaderButton("Contact"),
+                    headerButton("Contact"),
                   ],
                 ),
         ],
@@ -122,7 +122,7 @@ class _HeaderViewState extends State<HeaderView> {
     );
   }
 
-  Widget HeaderButton(String title) {
+  Widget headerButton(String title) {
     return MouseRegion(
       onEnter: (value) {
         setState(() {

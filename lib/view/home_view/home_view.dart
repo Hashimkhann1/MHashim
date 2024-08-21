@@ -13,27 +13,25 @@ class _HomeViewState extends State<HomeView> {
   final ScrollController _scrollController = ScrollController();
   bool _showScrollToTopButton = false;
   bool _showProjects = false;
+  bool _showWhatIDo = false;
+  bool _showContact = false;
 
   @override
   void initState() {
     super.initState();
     _scrollController.addListener(() {
       setState(() {
+        /// for scroll to top button
         _showScrollToTopButton = _scrollController.offset > 300;
         if(MediaQuery.of(context).size.width < 750){
-          if(_scrollController.offset > 494){
-            _showProjects = true;
-          }else{
-            _showProjects = false;
-          }
+          _showProjects = _scrollController.offset > 790;
+          _showWhatIDo = _scrollController.offset > 2520;
+          _showContact = _scrollController.offset > 3150;
         }else{
-          if(_scrollController.offset > 320){
-            _showProjects = true;
-          }else{
-            _showProjects = false;
-          }
+          _showProjects = _scrollController.offset > 430;
+          _showWhatIDo = _scrollController.offset > 1440;
+          _showContact = _scrollController.offset > 1940;
         }
-
       });
     });
   }
@@ -48,7 +46,6 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
 
     return Scaffold(
@@ -73,38 +70,22 @@ class _HomeViewState extends State<HomeView> {
 
             /// initial view
             const InitialView(),
-            SizedBox(height: Responsive.isMobile(context) ? height * 0.08 : height * 0.14),
+            SizedBox(height: Responsive.isMobile(context) ? height * 0.03 : height * 0.14),
 
             /// about section
-            Container(
-              color: Colors.white,
-              width: width,
-                child: const AboutView()),
+            const AboutView(),
 
             /// project section
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(left: Responsive.isMobile(context) ? 8.0 : 0),
-                  child: MyTitleText(
-                    title: "Projects",
-                    fontSize: Responsive.isMobile(context) ? 34 : 42,
-                  ),
-                ),
-                SizedBox(height: height * 0.02),
-                _showProjects ? const ProjectsView() : const SizedBox(),
-                SizedBox(height: height * 0.06),
-              ],
-            ),
+            _showProjects ? const ProjectsView() : const SizedBox(),
+            SizedBox(height: height * 0.04),
             SizedBox(height: Responsive.isMobile(context) ? height * 0.03 : height * 0.06),
 
             /// what i love to do section
-            const WhatIDoView(),
+            _showWhatIDo ? const WhatIDoView() : const SizedBox(),
             SizedBox(height: Responsive.isMobile(context) ? height * 0.09 : height * 0.17),
 
             /// contact section
-            ContactView(),
+            _showContact ? ContactView() : const SizedBox(),
             SizedBox(height: height * 0.05),
 
             /// fotter sectino
@@ -116,7 +97,7 @@ class _HomeViewState extends State<HomeView> {
           ? FloatingActionButton(
         onPressed: _scrollToTop,
         backgroundColor: MyColors.flutterColor,
-        child: const Icon(Icons.arrow_upward),
+        child: const Icon(Icons.keyboard_double_arrow_up_sharp,color: MyColors.whiteColor,size: 32,),
       )
           : null,
     );
