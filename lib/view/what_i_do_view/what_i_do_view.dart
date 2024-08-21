@@ -1,8 +1,5 @@
 
-import 'package:flutter/material.dart';
-import 'package:myportfolio/res/responsive/responsive.dart';
-import 'package:myportfolio/res/widgets/my_text.dart';
-import 'package:myportfolio/res/widgets/my_title_text.dart';
+import 'package:myportfolio/view.dart';
 
 class WhatIDoView extends StatelessWidget {
   const WhatIDoView({super.key});
@@ -50,7 +47,7 @@ List<Widget> _buildContent(BuildContext context, double width, double height) {
             height: 62,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
-              image: DecorationImage(
+              image: const DecorationImage(
                 image: AssetImage('assets/images/webIcon.png'),
                 fit: BoxFit.cover,
               ),
@@ -63,6 +60,7 @@ List<Widget> _buildContent(BuildContext context, double width, double height) {
             title: "Web Development",
             fontSize: Responsive.isMobile(context) ? 25 : 30,
             fontWeight: FontWeight.w900,
+            color: Colors.grey[100],
           ),
           SizedBox(height: height * 0.01),
 
@@ -72,10 +70,11 @@ List<Widget> _buildContent(BuildContext context, double width, double height) {
             "I like to code things from scratch, and enjoy bringing ideas to life in the browser. As a dedicated developer brings you cutting-edge programming and design.",
             fontSize: Responsive.isMobile(context) ? 18 : 23,
             textAlign: TextAlign.center,
+            color: Colors.grey[300],
           ),
         ],
       ),
-    ),
+    ).animate().fade(delay: 200.ms,duration: const Duration(milliseconds: 300)).moveX(duration: const Duration(milliseconds: 1200),delay: 600.ms),
     SizedBox(width: width * 0.03 , height: Responsive.isMobile(context) ? height * 0.06 : 0,),
 
     /// Mobile App Development section
@@ -91,7 +90,7 @@ List<Widget> _buildContent(BuildContext context, double width, double height) {
             height: 90,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
-              image: DecorationImage(
+              image: const DecorationImage(
                 image: AssetImage('assets/images/app-development.png'),
                 fit: BoxFit.fitHeight,
               ),
@@ -104,6 +103,7 @@ List<Widget> _buildContent(BuildContext context, double width, double height) {
             title: "Mobile App Development",
             fontSize: Responsive.isMobile(context) ? 25 : 30,
             fontWeight: FontWeight.w900,
+            color: Colors.grey[100],
           ),
           SizedBox(height: height * 0.01),
 
@@ -113,9 +113,10 @@ List<Widget> _buildContent(BuildContext context, double width, double height) {
             "Experienced mobile app developer who has a track record of success creating apps that are both well-received and commercially viable.",
             fontSize: Responsive.isMobile(context) ? 18 : 23,
             textAlign: TextAlign.center,
+            color: Colors.grey[300],
           ),
         ],
       ),
-    ),
+    ).animate().fade(delay: 200.ms,duration: const Duration(milliseconds: 300)).moveY(duration: const Duration(milliseconds: 1200),delay: 600.ms),
   ];
 }}
