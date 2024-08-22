@@ -23,8 +23,8 @@ class _HomeViewState extends State<HomeView> {
       setState(() {
         /// for scroll to top button
         _showScrollToTopButton = _scrollController.offset > 300;
-        if(MediaQuery.of(context).size.width < 750){
-          _showProjects = _scrollController.offset > 790;
+        if(MediaQuery.of(context).size.width < 890){
+          _showProjects = _scrollController.offset > 790 ? true : true;
           _showWhatIDo = _scrollController.offset > 2520;
           _showContact = _scrollController.offset > 3150;
         }else{
