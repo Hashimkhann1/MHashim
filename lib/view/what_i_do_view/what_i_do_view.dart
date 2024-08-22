@@ -74,7 +74,7 @@ List<Widget> _buildContent(BuildContext context, double width, double height) {
           ),
         ],
       ),
-    ).animate().fade(delay: 200.ms,duration: const Duration(milliseconds: 300)).moveX(duration: const Duration(milliseconds: 1200),delay: 600.ms),
+    ),
     SizedBox(width: width * 0.03 , height: Responsive.isMobile(context) ? height * 0.06 : 0,),
 
     /// Mobile App Development section
@@ -117,6 +117,6 @@ List<Widget> _buildContent(BuildContext context, double width, double height) {
           ),
         ],
       ),
-    ).animate().fade(delay: 200.ms,duration: const Duration(milliseconds: 300)).moveY(duration: const Duration(milliseconds: 1200),delay: 600.ms),
+    )
   ];
 }}
