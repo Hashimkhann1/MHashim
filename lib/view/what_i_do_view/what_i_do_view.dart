@@ -1,8 +1,26 @@
 
 import 'package:myportfolio/view.dart';
 
-class WhatIDoView extends StatelessWidget {
+class WhatIDoView extends StatefulWidget  {
   const WhatIDoView({super.key});
+
+  @override
+  State<WhatIDoView> createState() => _WhatIDoViewState();
+}
+
+class _WhatIDoViewState extends State<WhatIDoView> with TickerProviderStateMixin {
+
+  late AnimationController controller;
+
+  @override
+  void initState() {
+    controller = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 3500),
+      reverseDuration: Duration(milliseconds: 375),
+    );
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +32,7 @@ class WhatIDoView extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: Responsive.isMobile(context) ? CrossAxisAlignment.center : CrossAxisAlignment.start,
       children: [
-        Center(child: MyTitleText(title: "What I Love Doing",fontSize: Responsive.isMobile(context) ? 40 :  55,)),
+        Center(child: MyTitleText(title: "What I Love Doing",fontSize: Responsive.isMobile(context) ? 40 :  55,maxHeight: 90.0,controller: controller,)),
         SizedBox(height: height * 0.06,),
 
         Responsive.isMobile(context)

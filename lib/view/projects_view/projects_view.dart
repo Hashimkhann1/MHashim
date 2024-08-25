@@ -1,10 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:myportfolio/res/responsive/responsive.dart';
 import 'package:myportfolio/res/widgets/my_title_text.dart';
 
-class ProjectsView extends StatelessWidget {
+class ProjectsView extends StatefulWidget {
   const ProjectsView({super.key});
+
+  @override
+  State<ProjectsView> createState() => _ProjectsViewState();
+}
+
+class _ProjectsViewState extends State<ProjectsView> with TickerProviderStateMixin {
+
+  late AnimationController controller;
+
+  @override
+  void initState() {
+    controller = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 3500),
+      reverseDuration: Duration(milliseconds: 375),
+    );
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +36,8 @@ class ProjectsView extends StatelessWidget {
           child: MyTitleText(
             title: "Projects",
             fontSize: Responsive.isMobile(context) ? 34 : 42,
+            maxHeight: 90.0,
+            controller: controller,
           ),
         ),
         SizedBox(height: height * 0.02),
@@ -46,12 +65,6 @@ class ProjectsView extends StatelessWidget {
                   color: Colors.red,
                   borderRadius: BorderRadius.circular(Responsive.isTablet(context) ? 10 : 5),
                 ),
-              ).animate(
-                delay: (100 * index).ms, // Delay each item to create a staggered effect
-              ).scaleXY(
-                duration: Responsive.isMobile(context) ? index == 0 ? 1850.ms : index == 1 ? 2150.ms : (index * 740 ).ms : index == 0 ? 1450.ms : index == 1 ? 1650.ms : (index * 600 ).ms,
-                curve: Curves.easeOut
-                // curve: Curves.easeOut,
               );
             },
           ),

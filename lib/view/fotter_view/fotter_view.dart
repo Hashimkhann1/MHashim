@@ -20,13 +20,13 @@ class FotterView extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          MyText(title: "HMK",fontSize: 25,fontWeight: FontWeight.w900,color: MyColors.flutterColor,fontFamily: 'Oswald',letterSpacing: 2,),
+          const MyText(title: "HMK",fontSize: 25,fontWeight: FontWeight.w900,color: MyColors.flutterColor,fontFamily: 'Oswald',letterSpacing: 2,),
 
           Row(
             children: [
-              IconButton(onPressed: () {}, icon: FaIcon(FontAwesomeIcons.linkedin , size: 30,),color: Colors.blueAccent),
-              IconButton(onPressed: () {}, icon: FaIcon(FontAwesomeIcons.github , size: 30,),color: MyColors.blacColor),
-              IconButton(onPressed: () {}, icon: FaIcon(FontAwesomeIcons.facebook , size: 30,),color: Colors.blueAccent),
+              IconButton(onPressed: () {}, icon: const FaIcon(FontAwesomeIcons.linkedin , size: 30,),color: Colors.blueAccent),
+              IconButton(onPressed: () {}, icon: const FaIcon(FontAwesomeIcons.github , size: 30,),color: MyColors.blacColor),
+              IconButton(onPressed: () {}, icon: const FaIcon(FontAwesomeIcons.facebook , size: 30,),color: Colors.blueAccent),
             ],
           )
         ],

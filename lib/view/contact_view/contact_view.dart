@@ -9,12 +9,29 @@ import 'package:myportfolio/res/widgets/my_text_button.dart';
 import 'package:myportfolio/res/widgets/my_textfromfield.dart';
 import 'package:myportfolio/res/widgets/my_title_text.dart';
 
-class ContactView extends StatelessWidget {
-  ContactView({super.key});
+class ContactView extends StatefulWidget {
+  const ContactView({super.key});
 
+  @override
+  State<ContactView> createState() => _ContactViewState();
+}
+
+class _ContactViewState extends State<ContactView> with TickerProviderStateMixin{
   final nameController = TextEditingController();
   final emailController = TextEditingController();
   final messegeController = TextEditingController();
+
+  late AnimationController controller;
+
+  @override
+  void initState() {
+    controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 3500),
+      reverseDuration: const Duration(milliseconds: 375),
+    );
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,10 +56,10 @@ class ContactView extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          
-          MyTitleText(title: "Contact",fontSize: Responsive.isMobile(context) ? 34 : 42,),
+
+          MyTitleText(title: "Contact",fontSize: Responsive.isMobile(context) ? 34 : 42,maxHeight: 90.0,controller: controller,),
           SizedBox(height: height * 0.02,),
-          
+
           MyTextFormField(hintText: "Name", controller: nameController,fillColor: Colors.transparent, textColor: MyColors.whiteColor,hintTextColor: CupertinoColors.white,focusedBorderSide: const BorderSide(color: MyColors.flutterColor),),
           SizedBox(height: height * 0.02,),
           MyTextFormField(hintText: "Email", controller: emailController,fillColor: Colors.transparent , textColor: MyColors.whiteColor,hintTextColor: CupertinoColors.white,),

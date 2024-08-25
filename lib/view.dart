@@ -1,7 +1,6 @@
 
 
 export 'package:flutter/material.dart';
-export 'package:flutter_animate/flutter_animate.dart';
 export 'package:flutter_animated_button/flutter_animated_button.dart';
 export 'package:myportfolio/res/my_colors/my_colors.dart';
 export 'package:myportfolio/res/responsive/responsive.dart';
