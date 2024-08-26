@@ -72,8 +72,10 @@ class _AboutViewState extends State<AboutView> with TickerProviderStateMixin {
         }else{
           if (state.scrollOffsetValue > 1000) {
             controller.forward();
+            isAnimate = true;
           } else {
             controller.reverse();
+            isAnimate = false;
           }
         }
         return !isAnimate ? const SizedBox() :  Column(

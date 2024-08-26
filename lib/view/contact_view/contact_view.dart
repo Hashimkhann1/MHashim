@@ -72,7 +72,6 @@ class _ContactViewState extends State<ContactView> with TickerProviderStateMixin
             },
 
             builder: (context, state) {
-              print(state.scrollOffsetValue);
               if (state.scrollOffsetValue > 2859) {
                 controller.forward();
               } else {

@@ -16,17 +16,18 @@ class _ProjectsViewState extends State<ProjectsView>
   late AnimationController controller;
   late Animation<double> imageReveal;
   late Animation<double> imageOpacity;
+  bool isAnimate = false;
 
   @override
   void initState() {
     controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 3800),
+      duration: const Duration(milliseconds: 3500),
       reverseDuration: const Duration(milliseconds: 500),
     );
 
     imageReveal = Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-        parent: controller, curve: const Interval(0.0, 0.9, curve: Curves.easeOut)));
+        parent: controller, curve: const Interval(0.0, 0.8, curve: Curves.easeOut)));
 
     imageOpacity = Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
         parent: controller, curve: const Interval(0.0, 0.9, curve: Curves.easeOut)));
@@ -43,33 +44,45 @@ class _ProjectsViewState extends State<ProjectsView>
     return BlocBuilder<DisplayOffset, ScrollOffset>(
 
       buildWhen: (previous, current) {
-        if ((current.scrollOffsetValue > 1690 &&
-            current.scrollOffsetValue <= 1920) ||
-            controller.isAnimating) {
-          return true;
-        } else {
-          return false;
+        if(Responsive.isMobile(context)){
+          if ((current.scrollOffsetValue > 1690 &&
+              current.scrollOffsetValue <= 1920) ||
+              controller.isAnimating) {
+            return true;
+          } else {
+            return false;
+          }
+
+        }else{
+          if ((current.scrollOffsetValue > 1690 &&
+              current.scrollOffsetValue <= 1920) ||
+              controller.isAnimating) {
+            return true;
+          } else {
+            return false;
+          }
         }
       },
 
   builder: (context, state) {
-        // print(state.scrollOffsetValue);
         if(Responsive.isMobile(context)) {
           if (state.scrollOffsetValue > 1758) {
             controller.forward();
-          }
-          else {
-            controller.reverse();
+            isAnimate = true;
           }
         }else{
           if (state.scrollOffsetValue > 1430) {
             controller.forward();
+            if(state.scrollOffsetValue > 1700){
+              isAnimate = true;
+            }
           } else {
             controller.reverse();
+            isAnimate = false;
           }
         }
 
-    return Column(
+    return !isAnimate ? const SizedBox() : Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(

@@ -15,6 +15,7 @@ class _WhatIDoViewState extends State<WhatIDoView>
   late Animation<double> textRevealAnimation;
   late Animation<double> textOpicatyAnimation;
   late Animation<double> animation;
+  bool isAnimate = false;
 
   @override
   void initState() {
@@ -24,7 +25,7 @@ class _WhatIDoViewState extends State<WhatIDoView>
       reverseDuration: const Duration(milliseconds: 375),
     );
 
-    textRevealAnimation = Tween<double>(begin: 100.0, end: 0.0).animate(
+    textRevealAnimation = Tween<double>(begin: 120.0, end: 0.0).animate(
         CurvedAnimation(
             parent: controller,
             curve: const Interval(0.0, 0.8, curve: Curves.easeOut)));
@@ -49,23 +50,42 @@ class _WhatIDoViewState extends State<WhatIDoView>
     return BlocBuilder<DisplayOffset, ScrollOffset>(
 
       buildWhen: (previous, current) {
-        if ((current.scrollOffsetValue > 2280 &&
-            current.scrollOffsetValue <= 2889) ||
-            controller.isAnimating) {
-          return true;
-        } else {
-          return false;
+        if(Responsive.isMobile(context)){
+          if ((current.scrollOffsetValue > 3500 &&
+              current.scrollOffsetValue <= 3570) ||
+              controller.isAnimating) {
+            return true;
+          } else {
+            return false;
+          }
+        }else{
+          if ((current.scrollOffsetValue > 2280 &&
+              current.scrollOffsetValue <= 2889) ||
+              controller.isAnimating) {
+            return true;
+          } else {
+            return false;
+          }
         }
       },
 
       builder: (context, state) {
-        if (state.scrollOffsetValue > 2345) {
-          controller.forward();
-        } else {
-          controller.reverse();
+        if(Responsive.isMobile(context)){
+          if (state.scrollOffsetValue > 3530) {
+            controller.forward();
+            isAnimate = true;
+          }
+        }else{
+          if (state.scrollOffsetValue > 2345) {
+            controller.forward();
+            isAnimate = true;
+          } else {
+            controller.reverse();
+            isAnimate = false;
+          }
         }
 
-        return Column(
+        return !isAnimate ? SizedBox() : Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: Responsive.isMobile(context)
               ? CrossAxisAlignment.center
