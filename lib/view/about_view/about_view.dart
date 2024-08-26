@@ -61,7 +61,7 @@ class _AboutViewState extends State<AboutView> with TickerProviderStateMixin {
             Container(
               // color: Colors.white,
               padding: const EdgeInsets.symmetric(vertical: 60, horizontal: 20),
-              width: Responsive.isMobile(context) ? width * 0.98 : width * 0.73,
+              width: Responsive.isMobile(context) ? width * 0.98 : Responsive.isTablet(context) ? width * 0.89 : width * 0.73,
               child: AnimatedBuilder(
                   animation: controller,
                   builder: (context, child) {
