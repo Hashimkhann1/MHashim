@@ -43,8 +43,8 @@ class _ProjectsViewState extends State<ProjectsView>
     return BlocBuilder<DisplayOffset, ScrollOffset>(
 
       buildWhen: (previous, current) {
-        if ((current.scrollOffsetValue > 1450 &&
-            current.scrollOffsetValue <= 2290) ||
+        if ((current.scrollOffsetValue > 1690 &&
+            current.scrollOffsetValue <= 1920) ||
             controller.isAnimating) {
           return true;
         } else {
@@ -53,11 +53,21 @@ class _ProjectsViewState extends State<ProjectsView>
       },
 
   builder: (context, state) {
-    if (state.scrollOffsetValue > 1430) {
-      controller.forward();
-    } else {
-      controller.reverse();
-    }
+        // print(state.scrollOffsetValue);
+        if(Responsive.isMobile(context)) {
+          if (state.scrollOffsetValue > 1758) {
+            controller.forward();
+          }
+          else {
+            controller.reverse();
+          }
+        }else{
+          if (state.scrollOffsetValue > 1430) {
+            controller.forward();
+          } else {
+            controller.reverse();
+          }
+        }
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -67,7 +77,7 @@ class _ProjectsViewState extends State<ProjectsView>
               EdgeInsets.only(left: Responsive.isMobile(context) ? 8.0 : 0),
           child: MyTitleText(
             title: "Projects",
-            fontSize: Responsive.isMobile(context) ? 34 : 42,
+            fontSize: Responsive.isMobile(context) ? 37 : 42,
             maxHeight: 90.0,
             controller: controller,
           ),

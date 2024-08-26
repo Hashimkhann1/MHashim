@@ -58,8 +58,8 @@ class _InitialViewState extends State<InitialView> with TickerProviderStateMixin
           children: [
             SizedBox(height: Responsive.isMobile(context) ? height * 0.01 : height * 0.1,),
             SizedBox(
-              height: 180,
-              width: 180,
+              height: Responsive.isMobile(context) ? 154 : 180,
+              width: Responsive.isMobile(context) ? 154 : 180,
               child: Center(
                 child: FadeTransition(
                   opacity: imageOpacity,
@@ -89,7 +89,7 @@ class _InitialViewState extends State<InitialView> with TickerProviderStateMixin
                 child: MyText(
                   title:
                   "For over a decade, I’ve mastered the craft of turning code into dynamic, functional experiences. As a Flutter developer, I create seamless cross-platform apps, blending creativity with technical skill. From bringing ideas to life on the web to crafting elegant mobile solutions, I have the expertise to transform visions into reality.",
-                  fontSize: Responsive.isMobile(context) ? 20 : 26,
+                  fontSize: Responsive.isMobile(context) ? 18 : 26,
                   letterSpacing: 1.2,
                   fontFamily: 'Oswald',
                   color: Colors.grey[500],

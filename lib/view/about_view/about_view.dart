@@ -14,6 +14,7 @@ class AboutView extends StatefulWidget {
 class _AboutViewState extends State<AboutView> with TickerProviderStateMixin {
   late AnimationController controller;
   late Animation<double> textOpicatyAnimation;
+  bool isAnimate = false;
 
   @override
   void initState() {
@@ -28,10 +29,11 @@ class _AboutViewState extends State<AboutView> with TickerProviderStateMixin {
             parent: controller,
             curve: const Interval(0.1, 0.9, curve: Curves.easeOut)));
 
-    Future.delayed(const Duration(milliseconds: 1000), () {
-      controller.forward();
-    });
-    super.initState();
+    // Future.delayed(const Duration(milliseconds: 1000), () {
+    //   controller.reverse();
+    //   // print('called >>>>>');
+    // });
+    // super.initState();
 
     super.initState();
   }
@@ -42,21 +44,39 @@ class _AboutViewState extends State<AboutView> with TickerProviderStateMixin {
 
     return BlocBuilder<DisplayOffset, ScrollOffset>(
       buildWhen: (previous, current) {
-        if ((current.scrollOffsetValue > 990 &&
-            current.scrollOffsetValue <= 1400) ||
-            controller.isAnimating) {
-          return true;
-        } else {
-          return false;
+        if(Responsive.isMobile(context)){
+          if ((current.scrollOffsetValue >= 750 &&
+              current.scrollOffsetValue <= 820)) {
+            return true;
+          } else {
+            return false;
+          }
+        }else{
+          if ((current.scrollOffsetValue > 990 &&
+              current.scrollOffsetValue <= 1200) ||
+              controller.isAnimating) {
+            return true;
+          } else {
+            return false;
+          }
         }
       },
       builder: (context, state) {
-        if (state.scrollOffsetValue > 1000) {
-          controller.forward();
-        } else {
-          controller.reverse();
+        if(Responsive.isMobile(context)) {
+
+          /// for mobile
+          if (state.scrollOffsetValue > 780) {
+            controller.forward();
+            isAnimate = true;
+          }
+        }else{
+          if (state.scrollOffsetValue > 1000) {
+            controller.forward();
+          } else {
+            controller.reverse();
+          }
         }
-        return Column(
+        return !isAnimate ? const SizedBox() :  Column(
           children: [
             Container(
               // color: Colors.white,

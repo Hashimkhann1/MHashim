@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:myportfolio/res/my_colors/my_colors.dart';
 import 'package:myportfolio/res/widgets/my_text.dart';
+import 'package:myportfolio/view.dart';
 import 'package:shimmer/shimmer.dart';
 
 class MyTitleText extends StatefulWidget {
@@ -79,7 +80,7 @@ class _MyTitleTextState extends State<MyTitleText> with TickerProviderStateMixin
             LimitedBox(
               maxHeight: widget.maxHeight,
               child: Container(
-                height: MediaQuery.of(context).size.height * 0.07,
+                height: Responsive.isMobile(context) ? height * 0.09 : height * 0.07,
                 // color: Colors.white,
                 padding: EdgeInsets.only(top: textRevealAnimation.value),
                 child: Shimmer.fromColors(
