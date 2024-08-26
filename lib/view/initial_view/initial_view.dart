@@ -83,7 +83,7 @@ class _InitialViewState extends State<InitialView> with TickerProviderStateMixin
             SizedBox(height: Responsive.isMobile(context) ?height * 0.02 : height * 0.01),
 
             SizedBox(
-              width: Responsive.isMobile(context) ? width * 0.92 : width * 0.68,
+              width: Responsive.isMobile(context) ? width * 0.92 : Responsive.isTablet(context) ? width * 0.86 :  width * 0.68,
               child: FadeTransition(
                 opacity: textOpicatyAnimation,
                 child: MyText(
@@ -99,7 +99,7 @@ class _InitialViewState extends State<InitialView> with TickerProviderStateMixin
               )
             ),
 
-            SizedBox(height: height * 0.02,),
+            SizedBox(height: Responsive.isTablet(context) ? 30 :  height * 0.02,),
             AnimatedButton(
               height: 60,
               width: 200,

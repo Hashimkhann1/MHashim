@@ -3,11 +3,13 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myportfolio/res/my_colors/my_colors.dart';
 import 'package:myportfolio/res/responsive/responsive.dart';
 import 'package:myportfolio/res/widgets/my_text_button.dart';
 import 'package:myportfolio/res/widgets/my_textfromfield.dart';
 import 'package:myportfolio/res/widgets/my_title_text.dart';
+import 'package:myportfolio/view_model/scroll_offset/scroll_offset.dart';
 
 class ContactView extends StatefulWidget {
   const ContactView({super.key});
@@ -57,7 +59,29 @@ class _ContactViewState extends State<ContactView> with TickerProviderStateMixin
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
 
-          MyTitleText(title: "Contact",fontSize: Responsive.isMobile(context) ? 34 : 42,maxHeight: 90.0,controller: controller,),
+          BlocBuilder<DisplayOffset, ScrollOffset>(
+
+            buildWhen: (previous, current) {
+              if ((current.scrollOffsetValue > 2829 &&
+                  current.scrollOffsetValue <= 2974) ||
+                  controller.isAnimating) {
+                return true;
+              } else {
+                return false;
+              }
+            },
+
+            builder: (context, state) {
+              print(state.scrollOffsetValue);
+              if (state.scrollOffsetValue > 2859) {
+                controller.forward();
+              } else {
+                controller.reverse();
+              }
+
+              return MyTitleText(title: "Contact",fontSize: Responsive.isMobile(context) ? 34 : 42,maxHeight: 90.0,controller: controller,);
+  },
+),
           SizedBox(height: height * 0.02,),
 
           MyTextFormField(hintText: "Name", controller: nameController,fillColor: Colors.transparent, textColor: MyColors.whiteColor,hintTextColor: CupertinoColors.white,focusedBorderSide: const BorderSide(color: MyColors.flutterColor),),

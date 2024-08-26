@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myportfolio/res/responsive/responsive.dart';
 import 'package:myportfolio/res/widgets/my_title_text.dart';
+import 'package:myportfolio/view_model/scroll_offset/scroll_offset.dart';
 
 class ProjectsView extends StatefulWidget {
   const ProjectsView({super.key});
@@ -9,17 +11,27 @@ class ProjectsView extends StatefulWidget {
   State<ProjectsView> createState() => _ProjectsViewState();
 }
 
-class _ProjectsViewState extends State<ProjectsView> with TickerProviderStateMixin {
-
+class _ProjectsViewState extends State<ProjectsView>
+    with TickerProviderStateMixin {
   late AnimationController controller;
+  late Animation<double> imageReveal;
+  late Animation<double> imageOpacity;
 
   @override
   void initState() {
     controller = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 3500),
-      reverseDuration: Duration(milliseconds: 375),
+      duration: const Duration(milliseconds: 3800),
+      reverseDuration: const Duration(milliseconds: 500),
     );
+
+    imageReveal = Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+        parent: controller, curve: const Interval(0.0, 0.9, curve: Curves.easeOut)));
+
+    imageOpacity = Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+        parent: controller, curve: const Interval(0.0, 0.9, curve: Curves.easeOut)));
+
+
     super.initState();
   }
 
@@ -28,11 +40,31 @@ class _ProjectsViewState extends State<ProjectsView> with TickerProviderStateMix
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
 
+    return BlocBuilder<DisplayOffset, ScrollOffset>(
+
+      buildWhen: (previous, current) {
+        if ((current.scrollOffsetValue > 1450 &&
+            current.scrollOffsetValue <= 2290) ||
+            controller.isAnimating) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+
+  builder: (context, state) {
+    if (state.scrollOffsetValue > 1430) {
+      controller.forward();
+    } else {
+      controller.reverse();
+    }
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: EdgeInsets.only(left: Responsive.isMobile(context) ? 8.0 : 0),
+          padding:
+              EdgeInsets.only(left: Responsive.isMobile(context) ? 8.0 : 0),
           child: MyTitleText(
             title: "Projects",
             fontSize: Responsive.isMobile(context) ? 34 : 42,
@@ -42,35 +74,45 @@ class _ProjectsViewState extends State<ProjectsView> with TickerProviderStateMix
         ),
         SizedBox(height: height * 0.02),
         SizedBox(
-          width: Responsive.isMobile(context) ? width * 0.98 :  1250,
+          width: Responsive.isMobile(context) ? width * 0.98 : Responsive.isTablet(context) ? width * 0.86 : width * 0.70,
           child: GridView.builder(
-            // controller: _scrollController,
             itemCount: 6,
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: Responsive.isMobile(context)
-                  ? 1
-                  : Responsive.isTablet(context)
-                  ? 2
-                  : 3,
-              childAspectRatio: Responsive.isMobile(context) ? 0.35 / 0.22 : 0.35 / 0.3,
+              crossAxisCount: Responsive.isMobile(context) ? 1 : 3,
+              childAspectRatio:
+                  Responsive.isMobile(context) ? 0.3 / 0.22 : 0.12 / 0.09,
               mainAxisSpacing: Responsive.isMobile(context) ? 8 : 5,
-              crossAxisSpacing: Responsive.isTablet(context) ? 0 : 5,
+              crossAxisSpacing: Responsive.isTablet(context) ? 4 : 5,
             ),
             itemBuilder: (context, index) {
-              return Container(
-                margin: EdgeInsets.symmetric(horizontal: Responsive.isDesktop(context) ? 0 : 5),
-                decoration: BoxDecoration(
-                  color: Colors.red,
-                  borderRadius: BorderRadius.circular(Responsive.isTablet(context) ? 10 : 5),
-                ),
+              return AnimatedBuilder(
+                animation: controller,
+                builder: (context , child) {
+                  return FadeTransition(
+                    opacity: imageOpacity,
+                    child: Transform.scale(
+                      scale: imageReveal.value,
+                      child: Container(
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                          image: DecorationImage(
+                            image: AssetImage('assets/images/profile.jpg'),
+                            fit: BoxFit.cover
+                          )
+                        ),
+                      ),
+                    ),
+                  );
+                }
               );
             },
           ),
         ),
       ],
     );
-
+  },
+);
   }
 }

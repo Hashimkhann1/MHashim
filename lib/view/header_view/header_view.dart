@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myportfolio/res/my_colors/my_colors.dart';
 import 'package:myportfolio/res/responsive/responsive.dart';
 import 'package:myportfolio/res/widgets/my_text.dart';
+import 'package:shimmer/shimmer.dart';
 
 class HeaderView extends StatefulWidget {
   const HeaderView({super.key, this.openDrawerOnTap});
@@ -61,13 +62,18 @@ class _HeaderViewState extends State<HeaderView> {
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const MyText(
-                          title: "M Hashim",
-                          fontSize: 26,
-                          fontWeight: FontWeight.w900,
-                          color: MyColors.whiteColor,
-                          fontFamily: 'Oswald',
-                          letterSpacing: 2,
+                        Shimmer.fromColors(
+                          highlightColor: MyColors.flutterColor,
+                          baseColor: Colors.white,
+                          loop: 3,
+                          child: const MyText(
+                            title: "M Hashim",
+                            fontSize: 26,
+                            fontWeight: FontWeight.w900,
+                            color: MyColors.whiteColor,
+                            fontFamily: 'Oswald',
+                            letterSpacing: 2,
+                          ),
                         ),
                         RichText(
                                 text: const TextSpan(
