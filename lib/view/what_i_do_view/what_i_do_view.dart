@@ -85,7 +85,7 @@ class _WhatIDoViewState extends State<WhatIDoView>
           }
         }
 
-        return !isAnimate ? SizedBox() : Column(
+        return !isAnimate ? const SizedBox() : Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: Responsive.isMobile(context)
               ? CrossAxisAlignment.center

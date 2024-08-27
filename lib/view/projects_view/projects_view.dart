@@ -44,19 +44,22 @@ class _ProjectsViewState extends State<ProjectsView>
     return BlocBuilder<DisplayOffset, ScrollOffset>(
 
       buildWhen: (previous, current) {
-        if(Responsive.isMobile(context)){
-          if ((current.scrollOffsetValue > 1690 &&
-              current.scrollOffsetValue <= 1920) ||
-              controller.isAnimating) {
+        if (Responsive.isMobile(context)) {
+          if ((current.scrollOffsetValue > 1690 && current.scrollOffsetValue <= 1920) || controller.isAnimating) {
+            return true;
+          } else if (current.scrollOffsetValue < 1690) {
+            // isAnimate = false;
+            // controller.reverse();
             return true;
           } else {
             return false;
           }
-
-        }else{
-          if ((current.scrollOffsetValue > 1690 &&
-              current.scrollOffsetValue <= 1920) ||
-              controller.isAnimating) {
+        } else {
+          if ((current.scrollOffsetValue > 1690 && current.scrollOffsetValue <= 1920) || controller.isAnimating) {
+            return true;
+          } else if (current.scrollOffsetValue < 1690) {
+            isAnimate = false;
+            controller.reverse();
             return true;
           } else {
             return false;
@@ -73,9 +76,7 @@ class _ProjectsViewState extends State<ProjectsView>
         }else{
           if (state.scrollOffsetValue > 1430) {
             controller.forward();
-            if(state.scrollOffsetValue > 1700){
               isAnimate = true;
-            }
           } else {
             controller.reverse();
             isAnimate = false;

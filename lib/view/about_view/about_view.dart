@@ -43,24 +43,32 @@ class _AboutViewState extends State<AboutView> with TickerProviderStateMixin {
     final width = MediaQuery.of(context).size.width;
 
     return BlocBuilder<DisplayOffset, ScrollOffset>(
+
       buildWhen: (previous, current) {
-        if(Responsive.isMobile(context)){
-          if ((current.scrollOffsetValue >= 750 &&
-              current.scrollOffsetValue <= 820)) {
+        if (Responsive.isMobile(context)) {
+          if ((current.scrollOffsetValue >= 750 && current.scrollOffsetValue <= 820)) {
+            return true;
+          } else if (current.scrollOffsetValue < 750) {
+            // isAnimate = false;
+            // controller.reverse();
             return true;
           } else {
             return false;
           }
-        }else{
-          if ((current.scrollOffsetValue > 990 &&
-              current.scrollOffsetValue <= 1200) ||
+        } else {
+          if ((current.scrollOffsetValue > 990 && current.scrollOffsetValue <= 1200) ||
               controller.isAnimating) {
+            return true;
+          } else if (current.scrollOffsetValue < 990) {
+            isAnimate = false;
+            controller.reverse();
             return true;
           } else {
             return false;
           }
         }
       },
+
       builder: (context, state) {
         if(Responsive.isMobile(context)) {
 

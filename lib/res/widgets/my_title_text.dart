@@ -1,8 +1,5 @@
 
 
-import 'package:flutter/material.dart';
-import 'package:myportfolio/res/my_colors/my_colors.dart';
-import 'package:myportfolio/res/widgets/my_text.dart';
 import 'package:myportfolio/view.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -32,14 +29,14 @@ class _MyTitleTextState extends State<MyTitleText> with TickerProviderStateMixin
 
     controller = widget.controller;
 
-    headingBackAnimation = Tween<double>(begin: 0.0 ,end: 1.0).animate(CurvedAnimation(parent: controller, curve: Interval(0.3, 0.5 , curve: Curves.easeOut),));
+    headingBackAnimation = Tween<double>(begin: 0.0 ,end: 1.0).animate(CurvedAnimation(parent: controller, curve: const Interval(0.3, 0.5 , curve: Curves.easeOut),));
 
-    textRevealAnimation  = Tween<double>(begin: 100.0, end: 0.0).animate(CurvedAnimation(parent: controller, curve: Interval(0.0, 0.3 , curve: Curves.easeOut)));
+    textRevealAnimation  = Tween<double>(begin: 100.0, end: 0.0).animate(CurvedAnimation(parent: controller, curve: const Interval(0.0, 0.3 , curve: Curves.easeOut)));
 
-    textOpicatyAnimation  = Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(parent: controller, curve: Interval(0.0, 0.3 , curve: Curves.easeOut)));
+    textOpicatyAnimation  = Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(parent: controller, curve: const Interval(0.0, 0.3 , curve: Curves.easeOut)));
 
 
-    Future.delayed(Duration(milliseconds: 1000),() {
+    Future.delayed(const Duration(milliseconds: 1000),() {
       controller.forward();
     });
     super.initState();
@@ -86,7 +83,7 @@ class _MyTitleTextState extends State<MyTitleText> with TickerProviderStateMixin
                 child: Shimmer.fromColors(
                   baseColor: Colors.white,
                   highlightColor: MyColors.flutterColor,
-                  period: Duration(milliseconds: 2000),
+                  period: const Duration(milliseconds: 2000),
                   loop: 2,
                   child: FadeTransition(
                     opacity: textOpicatyAnimation,

@@ -1,5 +1,4 @@
 import 'package:myportfolio/view.dart';
-import 'package:shimmer/shimmer.dart';
 
 class InitialView extends StatefulWidget {
   const InitialView({super.key});
@@ -27,10 +26,10 @@ class _InitialViewState extends State<InitialView> with TickerProviderStateMixin
     );
 
     imageReveal = Tween<double>(begin: 0.0, end: 170.0).animate(CurvedAnimation(
-        parent: controller, curve: Interval(0.0, 0.7, curve: Curves.easeOut)));
+        parent: controller, curve: const Interval(0.0, 0.7, curve: Curves.easeOut)));
 
     imageOpacity = Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-        parent: controller, curve: Interval(0.0, 0.7, curve: Curves.easeOut)));
+        parent: controller, curve: const Interval(0.0, 0.7, curve: Curves.easeOut)));
 
     headingBackAnimation = Tween<double>(begin: 0.0 ,end: 1.0).animate(CurvedAnimation(parent: controller, curve: const Interval(0.3, 0.5 , curve: Curves.easeOut),));
 
@@ -66,10 +65,11 @@ class _InitialViewState extends State<InitialView> with TickerProviderStateMixin
                   child: SizedBox(
                     width: imageReveal.value,
                     height: imageReveal.value,
-                    child: CircleAvatar(
+                    child: const CircleAvatar(
                       backgroundColor: Colors.black38,
                       radius: 100,
-                      backgroundImage: AssetImage('assets/images/profile.jpg'),
+                      // backgroundImage: AssetImage('assets/images/profile.jpg'),
+                      backgroundImage: NetworkImage('https://i.imgur.com/0BY42Xv_d.jpg?maxwidth=520&shape=thumb&fidelity=high'),
                     ),
                   ),
                 ),
