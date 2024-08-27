@@ -74,30 +74,27 @@ class _MyTitleTextState extends State<MyTitleText> with TickerProviderStateMixin
                 ),
               )
             ),
-            LimitedBox(
-              maxHeight: widget.maxHeight,
-              child: Container(
-                height: Responsive.isMobile(context) ? height * 0.09 : height * 0.07,
-                // color: Colors.white,
-                padding: EdgeInsets.only(top: textRevealAnimation.value),
-                child: Shimmer.fromColors(
-                  baseColor: Colors.white,
-                  highlightColor: MyColors.flutterColor,
-                  period: const Duration(milliseconds: 2000),
-                  loop: 2,
-                  child: FadeTransition(
-                    opacity: textOpicatyAnimation,
-                    child: MyText(
-                      title: widget.title!,
-                      fontSize: widget.fontSize,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Oswald',
-                      letterSpacing: 3,
-                      color: const Color(0xFFFFFFFF),
-                    ),
+            Container(
+              height: Responsive.isMobile(context) ? height * 0.09 : height * 0.07,
+              // color: Colors.white,
+              padding: EdgeInsets.only(top: textRevealAnimation.value),
+              child: Shimmer.fromColors(
+                baseColor: Colors.white,
+                highlightColor: MyColors.flutterColor,
+                period: const Duration(milliseconds: 2000),
+                loop: 2,
+                child: FadeTransition(
+                  opacity: textOpicatyAnimation,
+                  child: MyText(
+                    title: widget.title!,
+                    fontSize: widget.fontSize,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Oswald',
+                    letterSpacing: 3,
+                    color: const Color(0xFFFFFFFF),
                   ),
-                )
-              ),
+                ),
+              )
             ),
           ],
         );

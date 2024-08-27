@@ -122,7 +122,7 @@ class _ProjectsViewState extends State<ProjectsView>
                         decoration: const BoxDecoration(
                           color: Colors.white,
                           image: DecorationImage(
-                            image: AssetImage('assets/images/profile.jpg'),
+                            image: NetworkImage('https://i.imgur.com/0BY42Xv_d.jpg?maxwidth=520&shape=thumb&fidelity=high'),
                             fit: BoxFit.cover
                           )
                         ),
