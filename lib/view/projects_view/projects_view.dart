@@ -35,6 +35,24 @@ class _ProjectsViewState extends State<ProjectsView>
 
     super.initState();
   }
+  List<String> projectsData = [
+    'https://i.imgur.com/TWOPsTV_d.jpg?maxwidth=520&shape=thumb&fidelity=high',
+    'https://i.imgur.com/uwGy0rE_d.jpg?maxwidth=520&shape=thumb&fidelity=high',
+    'https://i.imgur.com/0A2TNwL_d.jpg?maxwidth=520&shape=thumb&fidelity=high',
+    'https://i.imgur.com/n5EiYGR_d.jpg?maxwidth=520&shape=thumb&fidelity=high',
+    'https://i.imgur.com/fFS9GSG_d.jpg?maxwidth=520&shape=thumb&fidelity=high',
+    'https://i.imgur.com/RlDoRLR_d.jpg?maxwidth=520&shape=thumb&fidelity=high',
+  ];
+
+  List<String> projectsDataForMobile = [
+    'https://i.imgur.com/TWOPsTV_d.jpg?maxwidth=520&shape=thumb&fidelity=high',
+    'https://i.imgur.com/n5EiYGR_d.jpg?maxwidth=520&shape=thumb&fidelity=high',
+    'https://i.imgur.com/uwGy0rE_d.jpg?maxwidth=520&shape=thumb&fidelity=high',
+    'https://i.imgur.com/fFS9GSG_d.jpg?maxwidth=520&shape=thumb&fidelity=high',
+    'https://i.imgur.com/0A2TNwL_d.jpg?maxwidth=520&shape=thumb&fidelity=high',
+    'https://i.imgur.com/RlDoRLR_d.jpg?maxwidth=520&shape=thumb&fidelity=high',
+  ];
+
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +66,7 @@ class _ProjectsViewState extends State<ProjectsView>
           if ((current.scrollOffsetValue > 1690 && current.scrollOffsetValue <= 1920) || controller.isAnimating) {
             return true;
           } else if (current.scrollOffsetValue < 1690) {
-            // isAnimate = false;
+            isAnimate = false;
             // controller.reverse();
             return true;
           } else {
@@ -100,17 +118,18 @@ class _ProjectsViewState extends State<ProjectsView>
         SizedBox(
           width: Responsive.isMobile(context) ? width * 0.98 : Responsive.isTablet(context) ? width * 0.86 : width * 0.70,
           child: GridView.builder(
-            itemCount: 6,
+            itemCount: projectsData.length,
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: Responsive.isMobile(context) ? 1 : 3,
               childAspectRatio:
                   Responsive.isMobile(context) ? 0.3 / 0.22 : 0.12 / 0.09,
-              mainAxisSpacing: Responsive.isMobile(context) ? 8 : 5,
-              crossAxisSpacing: Responsive.isTablet(context) ? 4 : 5,
+              mainAxisSpacing: Responsive.isMobile(context) ? 4 : 5,
+              crossAxisSpacing: Responsive.isTablet(context) ? 12 : 7,
             ),
             itemBuilder: (context, index) {
+
               return AnimatedBuilder(
                 animation: controller,
                 builder: (context , child) {
@@ -119,10 +138,10 @@ class _ProjectsViewState extends State<ProjectsView>
                     child: Transform.scale(
                       scale: imageReveal.value,
                       child: Container(
-                        decoration: const BoxDecoration(
-                          color: Colors.white,
+                        decoration: BoxDecoration(
+                          color: Colors.black.withOpacity(0.1),
                           image: DecorationImage(
-                            image: NetworkImage('https://i.imgur.com/0BY42Xv_d.jpg?maxwidth=520&shape=thumb&fidelity=high'),
+                            image: NetworkImage(Responsive.isMobile(context) ? projectsDataForMobile[index] : projectsData[index].toString()),
                             fit: BoxFit.cover
                           )
                         ),

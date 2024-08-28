@@ -49,7 +49,7 @@ class _AboutViewState extends State<AboutView> with TickerProviderStateMixin {
           if ((current.scrollOffsetValue >= 750 && current.scrollOffsetValue <= 820)) {
             return true;
           } else if (current.scrollOffsetValue < 750) {
-            // isAnimate = false;
+            isAnimate = false;
             // controller.reverse();
             return true;
           } else {
