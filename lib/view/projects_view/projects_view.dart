@@ -73,14 +73,27 @@ class _ProjectsViewState extends State<ProjectsView>
             return false;
           }
         } else {
-          if ((current.scrollOffsetValue > 1690 && current.scrollOffsetValue <= 1920) || controller.isAnimating) {
-            return true;
-          } else if (current.scrollOffsetValue < 1690) {
-            isAnimate = false;
-            controller.reverse();
-            return true;
-          } else {
-            return false;
+
+          if(Responsive.isTablet(context)){
+            if ((current.scrollOffsetValue > 1790 && current.scrollOffsetValue <= 1820) || controller.isAnimating) {
+              return true;
+            } else if (current.scrollOffsetValue < 1790) {
+              isAnimate = false;
+              controller.reverse();
+              return true;
+            } else {
+              return false;
+            }
+          }else{
+            if ((current.scrollOffsetValue > 1690 && current.scrollOffsetValue <= 1920) || controller.isAnimating) {
+              return true;
+            } else if (current.scrollOffsetValue < 1690) {
+              isAnimate = false;
+              controller.reverse();
+              return true;
+            } else {
+              return false;
+            }
           }
         }
       },
@@ -92,12 +105,22 @@ class _ProjectsViewState extends State<ProjectsView>
             isAnimate = true;
           }
         }else{
-          if (state.scrollOffsetValue > 1430) {
-            controller.forward();
+          if(Responsive.isTablet(context)){
+            if (state.scrollOffsetValue > 1800) {
+              controller.forward();
               isAnimate = true;
-          } else {
-            controller.reverse();
-            isAnimate = false;
+            } else {
+              controller.reverse();
+              isAnimate = false;
+            }
+          }else{
+            if (state.scrollOffsetValue > 1430) {
+              controller.forward();
+              isAnimate = true;
+            } else {
+              controller.reverse();
+              isAnimate = false;
+            }
           }
         }
 

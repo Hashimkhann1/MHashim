@@ -1,3 +1,4 @@
+import 'package:myportfolio/res/widgets/my_text_button.dart';
 import 'package:myportfolio/view.dart';
 
 class InitialView extends StatefulWidget {
@@ -99,25 +100,11 @@ class _InitialViewState extends State<InitialView> with TickerProviderStateMixin
               )
             ),
 
-            SizedBox(height: Responsive.isTablet(context) ? 30 :  height * 0.02,),
-            AnimatedButton(
-              height: 60,
-              width: 200,
-              text: 'About me',
-              textStyle: const TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 20),
-              isReverse: true,
-              selectedTextColor: MyColors.whiteColor,
-              transitionType: TransitionType.LEFT_TO_RIGHT,
-              // textStyle: submitTextStyle,
-              selectedBackgroundColor: Colors.greenAccent.withOpacity(0.8),
-              backgroundColor: Colors.black38,
-              borderColor: Colors.greenAccent.withOpacity(0.5),
-              borderRadius: 12,
-              borderWidth: 2,
-              onPress: () {  },
-            ),
+            SizedBox(height: Responsive.isTablet(context) ? 30 :  height * 0.026,),
 
-            SizedBox(height: Responsive.isMobile(context) ? height * 0.02 : height * 0.06,)
+            MyTextButton(title: "About Me", onPressed: (){} , fontSize: 22,width: 160,height: 52,backgroundColor: Colors.transparent,borderColor: Colors.greenAccent.withOpacity(0.8),),
+
+            SizedBox(height: Responsive.isMobile(context) ? height * 0.02 : Responsive.isTablet(context) ? 0 : height * 0.06,)
           ],
         );
       }

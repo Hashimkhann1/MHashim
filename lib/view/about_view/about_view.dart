@@ -29,11 +29,6 @@ class _AboutViewState extends State<AboutView> with TickerProviderStateMixin {
             parent: controller,
             curve: const Interval(0.1, 0.9, curve: Curves.easeOut)));
 
-    // Future.delayed(const Duration(milliseconds: 1000), () {
-    //   controller.reverse();
-    //   // print('called >>>>>');
-    // });
-    // super.initState();
 
     super.initState();
   }
@@ -55,17 +50,25 @@ class _AboutViewState extends State<AboutView> with TickerProviderStateMixin {
           } else {
             return false;
           }
+
         } else {
-          if ((current.scrollOffsetValue > 990 && current.scrollOffsetValue <= 1200) ||
-              controller.isAnimating) {
+          /// for tablet
+          if(Responsive.isTablet(context)){
+            isAnimate = true;
             return true;
-          } else if (current.scrollOffsetValue < 990) {
-            isAnimate = false;
-            controller.reverse();
-            return true;
-          } else {
-            return false;
+          }else{
+            if ((current.scrollOffsetValue > 990 && current.scrollOffsetValue <= 1200) ||
+                controller.isAnimating) {
+              return true;
+            } else if (current.scrollOffsetValue < 990) {
+              isAnimate = false;
+              controller.reverse();
+              return true;
+            } else {
+              return false;
+            }
           }
+
         }
       },
 
@@ -77,7 +80,12 @@ class _AboutViewState extends State<AboutView> with TickerProviderStateMixin {
             controller.forward();
             isAnimate = true;
           }
-        }else{
+        }else if(Responsive.isTablet(context)) {
+          if (state.scrollOffsetValue > 1240) {
+            controller.forward();
+            isAnimate = true;
+          }
+        } else{
           if (state.scrollOffsetValue > 1000) {
             controller.forward();
             isAnimate = true;
@@ -91,7 +99,7 @@ class _AboutViewState extends State<AboutView> with TickerProviderStateMixin {
             Container(
               // color: Colors.white,
               padding: const EdgeInsets.symmetric(vertical: 60, horizontal: 20),
-              width: Responsive.isMobile(context) ? width * 0.98 : Responsive.isTablet(context) ? width * 0.89 : width * 0.73,
+              width: Responsive.isMobile(context) ? width * 0.98 : Responsive.isTablet(context) ? width * 0.92 : width * 0.73,
               child: AnimatedBuilder(
                   animation: controller,
                   builder: (context, child) {

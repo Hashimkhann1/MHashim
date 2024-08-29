@@ -42,7 +42,7 @@ class _ContactViewState extends State<ContactView> with TickerProviderStateMixin
     final height = MediaQuery.of(context).size.height;
 
     return Container(
-      width: Responsive.isMobile(context) ? width * 0.96 : width * 0.5,
+      width: Responsive.isMobile(context) ? width * 0.96 : Responsive.isTablet(context) ? width * 0.90 : width * 0.5,
       padding: EdgeInsets.symmetric(horizontal: width * 0.01,vertical: height * 0.03),
       decoration: BoxDecoration(
         color: Colors.black54,
@@ -89,7 +89,7 @@ class _ContactViewState extends State<ContactView> with TickerProviderStateMixin
           SizedBox(height: height * 0.02,),
           MyTextFormField(hintText: "Message", controller: messegeController,fillColor: Colors.transparent, maxLines: Responsive.isMobile(context) ? 3 : 5, textColor: MyColors.whiteColor,hintTextColor: CupertinoColors.white,),
           SizedBox(height: height * 0.02,),
-          Align(alignment: Alignment.topLeft, child: MyTextButton(title: "Send Message", fontSize: 18, onPressed: (){},width: 140,height: 48,backgroundColor: Colors.greenAccent.withOpacity(0.8),))
+          Align(alignment: Alignment.topLeft, child: MyTextButton(title: "Send Message", fontSize: 18, onPressed: (){},width: 140,height: 48,backgroundColor: Colors.greenAccent.withOpacity(0.8),borderColor: Colors.transparent,))
 
         ],
       ),

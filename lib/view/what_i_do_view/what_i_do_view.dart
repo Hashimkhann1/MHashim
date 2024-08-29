@@ -59,12 +59,22 @@ class _WhatIDoViewState extends State<WhatIDoView>
             return false;
           }
         }else{
-          if ((current.scrollOffsetValue > 2280 &&
-              current.scrollOffsetValue <= 2889) ||
-              controller.isAnimating) {
-            return true;
-          } else {
-            return false;
+          if(Responsive.isTablet(context)) {
+            if ((current.scrollOffsetValue > 2400 &&
+                current.scrollOffsetValue <= 2620) ||
+                controller.isAnimating) {
+              return true;
+            } else {
+              return false;
+            }
+          }else{
+            if ((current.scrollOffsetValue > 2280 &&
+                current.scrollOffsetValue <= 2889) ||
+                controller.isAnimating) {
+              return true;
+            } else {
+              return false;
+            }
           }
         }
       },
@@ -76,13 +86,25 @@ class _WhatIDoViewState extends State<WhatIDoView>
             isAnimate = true;
           }
         }else{
-          if (state.scrollOffsetValue > 2345) {
-            controller.forward();
-            isAnimate = true;
-          } else {
-            controller.reverse();
-            isAnimate = false;
+          if(Responsive.isTablet(context)){
+            if (state.scrollOffsetValue > 2412) {
+              controller.forward();
+              isAnimate = true;
+            } else {
+              controller.reverse();
+              isAnimate = false;
+            }
+
+          }else{
+            if (state.scrollOffsetValue > 2345) {
+              controller.forward();
+              isAnimate = true;
+            } else {
+              controller.reverse();
+              isAnimate = false;
+            }
           }
+
         }
 
         return !isAnimate ? const SizedBox() : Column(
@@ -129,7 +151,7 @@ class _WhatIDoViewState extends State<WhatIDoView>
     return [
       /// Web Development section
       SizedBox(
-        width: Responsive.isMobile(context) ? width * 0.94 : width * 0.28,
+        width: Responsive.isMobile(context) ? width * 0.94 : Responsive.isTablet(context) ? width * 0.46 : width * 0.28,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -201,7 +223,7 @@ class _WhatIDoViewState extends State<WhatIDoView>
 
       /// Mobile App Development section
       SizedBox(
-        width: Responsive.isMobile(context) ? width * 0.94 : width * 0.3,
+        width: Responsive.isMobile(context) ? width * 0.94 : Responsive.isTablet(context) ? width * 0.46 : width * 0.3,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,

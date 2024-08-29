@@ -8,6 +8,7 @@ class MyTextButton extends StatelessWidget {
   final double? width;
   final double? height;
   final Color? backgroundColor;
+  final Color? borderColor;
   final bool loading;
   const MyTextButton({
     super.key,
@@ -17,6 +18,7 @@ class MyTextButton extends StatelessWidget {
     this.height = 34.0,
     this.width = double.infinity,
     this.backgroundColor = MyColors.flutterColor,
+    this.borderColor,
     this.loading = false,
   });
 
@@ -30,6 +32,7 @@ class MyTextButton extends StatelessWidget {
           height: height,
           decoration: BoxDecoration(
             color: backgroundColor,
+            border: Border.all(color: borderColor!,width: 2.0),
             borderRadius: BorderRadius.circular(8)
           ),
           child: loading ? CircularProgressIndicator(color: MyColors.whiteColor,) : Text(
